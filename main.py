@@ -1,4 +1,5 @@
 from Polynomial import Zx
+from random import randrange
 
 def circular_convolution(F,G,n): 
     result = F.multiply(G)
@@ -25,10 +26,14 @@ def balancedmod(F,q,n):     # n is the no. of coeff in F
     return result
 
 
+
 # note that n = len(F.coeffs) = 6
 F = Zx([3,1,4,1,5,9])       
 G = Zx([0,0,1])
 print(F.print_polynomial())
 print(G.print_polynomial())
-result = balancedmod(F,3,6)
+
+result = Zx([])
+result.randompoly(5,7)
+
 print(result.print_polynomial())
