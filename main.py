@@ -18,9 +18,15 @@ def circular_convolution(F,G,n):
     
     return result
 
-F = Zx([3,1,4])
-G = Zx([0,1])
+def balancedmod(F,q,n):     # n is the no. of coeff in F
+    result = Zx([])
+    for i in range(n):
+        result.coeffs.append(((F.coeffs[i] + q//2) % q) - q//2)
+    return result
+
+F = Zx([3,1,4,1,5,9])
+G = Zx([0,0,1])
 print(F.print_polynomial())
 print(G.print_polynomial())
-result = circular_convolution(F,G,3)
+result = balancedmod(F,3,6)
 print(result.print_polynomial())
