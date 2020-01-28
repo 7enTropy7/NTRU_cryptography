@@ -24,7 +24,9 @@ def balancedmod(F,q,n):     # n is the no. of coeff in F
         result.coeffs.append(((F.coeffs[i] + q//2) % q) - q//2)
     return result
 
-F = Zx([3,1,4,1,5,9])       # note that n = len(F.coeffs) = 6
+
+# note that n = len(F.coeffs) = 6
+F = Zx([3,1,4,1,5,9])       
 G = Zx([0,0,1])
 print(F.print_polynomial())
 print(G.print_polynomial())
