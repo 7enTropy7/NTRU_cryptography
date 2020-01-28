@@ -40,11 +40,11 @@ class Zx:
         return Zx(result)
 
     def multiply_single_term(self, coefficient, degree):
-      result = Zx(self.coeffs[:])
-      result.coeffs[0:0] = [0]*degree
-      for i in range(len(result.coeffs)):
-         result.coeffs *= coefficient
-      return result
+        result = Zx(self.coeffs[:])
+        result.coeffs[0:0] = [0]*degree
+        for i in range(len(result.coeffs)):
+            result.coeffs *= coefficient
+        return result
 
     def multiply(self, other):      
         result = Polynomial([])
@@ -55,5 +55,5 @@ class Zx:
 F = Zx([3,1,4])
 G = Zx([2,7,1])
 print(F.print_polynomial())
-result = F.multiply_single_term(2,1)
+result = F.multiply_single_term(1,2)
 print(result.print_polynomial())
