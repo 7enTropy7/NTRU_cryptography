@@ -55,5 +55,5 @@ class Zx:
 F = Zx([3,1,4])
 G = Zx([2,7,1])
 print(F.print_polynomial())
-result = F.multiply_single_term(1,1)
+result = F.multiply_single_term(2,1)
 print(result.print_polynomial())
