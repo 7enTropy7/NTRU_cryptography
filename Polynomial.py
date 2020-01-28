@@ -2,9 +2,6 @@ class Zx:
     def __init__(self, coeffs):
         self.coeffs = coeffs
    
-    def degree(self):
-        return len(self.coeffs)-1
-   
     def coefficient(self, n):
         if (type(n) != type(1)) or n < 0:
             print('Coefficient does not exist!')
@@ -13,18 +10,9 @@ class Zx:
         else:
             return self.coeffs[n]
 
-    def print_polynomial(self):
-        terms = []
-        for i in range(len(self.coeffs)):
-            if i == 0:
-                terms.append(str(self.coeffs[i]))
-            elif i == 1:
-                terms.append(str(self.coeffs[i])+"x")
-            else:
-                terms.append(str(self.coeffs[i])+"x^"+str(i))
-        terms.reverse() 
-        return "+".join(terms) 
-
+    def degree(self):
+        return len(self.coeffs)-1
+   
     def eval(self, x):
         result = 0
         for i in range(len(self.coeffs)):
@@ -36,7 +24,6 @@ class Zx:
         result = [0] * length
         for i in range(len(result)):
             result[i] = self.coefficient(i) + other.coefficient(i)
-        
         return Zx(result)
 
     def multiply_single_term(self, coefficient, degree):
@@ -51,3 +38,15 @@ class Zx:
         for term in range(other.degree()+1):
             result=result.add(self.multiply_single_term(other.coefficient(term),term))
         return result
+
+    def print_polynomial(self):
+        terms = []
+        for i in range(len(self.coeffs)):
+            if i == 0:
+                terms.append(str(self.coeffs[i]))
+            elif i == 1:
+                terms.append(str(self.coeffs[i])+"x")
+            else:
+                terms.append(str(self.coeffs[i])+"x^"+str(i))
+        terms.reverse() 
+        return "+".join(terms) 
