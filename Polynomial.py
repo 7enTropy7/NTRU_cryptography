@@ -1,3 +1,5 @@
+from random import randrange 
+
 class Zx:
     def __init__(self, coeffs):
         self.coeffs = coeffs
@@ -50,3 +52,13 @@ class Zx:
                 terms.append(str(self.coeffs[i])+"x^"+str(i))
         terms.reverse() 
         return "+".join(terms) 
+
+    def randomdpoly(self,d,n):
+        self.coeffs = [0]*n
+        for j in range(d):
+            while True:
+                r = randrange(n)
+                if not self.coeffs[r]: 
+                    break
+            self.coeffs[r] = 1-2*randrange(2)
+        self.print_polynomial()
