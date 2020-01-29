@@ -29,7 +29,7 @@ def balancedmod(F,q,n):     # n is the no. of coeff in F
 
 # note that n = len(F.coeffs) = 6
 F = Zx([3,1,4,1,5,9])       
-G = Zx([0,0,1])
+G = Zx([2,7,1])
 
 print('F = ',end='')
 print(F.print_polynomial())
@@ -52,9 +52,7 @@ print('Balanced Modulus = ',end='')
 result_balmod = balancedmod(F,10,3)
 print(result_balmod.print_polynomial())
 
+print('Random Polynomial = ',end='')
 random_polynomial = Zx([])
 random_polynomial.randompoly(5,7)
-
-print('Random Polynomial = ',end='')
 print(random_polynomial.print_polynomial())
-
