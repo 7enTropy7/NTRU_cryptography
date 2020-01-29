@@ -1,23 +1,13 @@
 from Polynomial import Zx
 from random import randrange
 
-def circular_convolution(F,G,n): 
+def cyclic_convolution(F,G,n):
     result = F.multiply(G)
-    t_ = []
-    for i in range(len(result.coeffs)):
-        if i>=n:
-            t_.append(result.coeffs[i])
-
-    result.coeffs = result.coeffs[0:3]
-
-    if len(result.coeffs)>len(t_):
-        for i in range(len(t_)):
-            result.coeffs[i]+=t_[i]
-    else:
-        for i in range(len(result.coeffs)):
-            result.coeffs[i]+=t_[i]
-    
-    return result
+    t = Zx([])
+    t.coeffs = [0]*n
+    for i in range(result.degree()+1):
+        t.coeffs[i%n] += result.coeffs[i]    
+    return t
 
 def balancedmod(F,q,n):     # n is the no. of coeff in F
     result = Zx([])
@@ -45,8 +35,8 @@ print('F * G = ',end='')
 result_multiply = F.multiply(G)
 print(result_multiply.print_polynomial())
 
-print('Circular_Convolution(F,G) = ',end='')
-result_conv = circular_convolution(F,G,3)
+print('Cyclic_Convolution(F,G,n) = ',end='')
+result_conv = cyclic_convolution(F,G,3)
 print(result_conv.print_polynomial())
 
 print('Balanced Modulus = ',end='')
