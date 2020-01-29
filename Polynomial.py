@@ -53,7 +53,7 @@ class Zx:
         terms.reverse() 
         return "+".join(terms) 
 
-    def randomdpoly(self,d,n):
+    def randompoly(self,d,n):
         self.coeffs = [0]*n
         for j in range(d):
             while True:
