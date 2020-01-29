@@ -26,6 +26,7 @@ def balancedmod(F,q,n):     # n is the no. of coeff in F
     return result
 
 
+#________________________TESTING___________________________
 
 # note that n = len(F.coeffs) = 6
 F = Zx([3,1,4,1,5,9])       
