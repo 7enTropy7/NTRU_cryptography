@@ -79,8 +79,8 @@ print(result_multiply.print_polynomial())
 print('F / G = ',end='')
 X = deepcopy(F)
 Y = deepcopy(G)
-q, r = poly_divmod(X, Y)
-print("Quotient: {}, Remainder: {}\n".format(q.print_polynomial(), r.print_polynomial()))
+quotient, remainder = poly_divmod(X, Y)
+print("Quotient: {}, Remainder: {}\n".format(quotient.print_polynomial(), remainder.print_polynomial()))
 
 print(F.print_polynomial())
 
