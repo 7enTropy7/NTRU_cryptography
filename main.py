@@ -82,8 +82,6 @@ Y = deepcopy(G)
 quotient, remainder = poly_divmod(X, Y)
 print("Quotient: {}, Remainder: {}\n".format(quotient.print_polynomial(), remainder.print_polynomial()))
 
-print(F.print_polynomial())
-
 print('Cyclic_Convolution(F,G,n) = ',end='')
 result_conv = cyclic_convolution(F,G,3)
 print(result_conv.print_polynomial())
