@@ -1,7 +1,10 @@
 from Polynomial import Zx
 from random import randrange
 from copy import deepcopy
-    
+import sympy as sym
+from sympy import GF
+
+
 def cyclic_convolution(F,G,n):
     result = F.multiply(G)
     t = Zx([])
@@ -52,15 +55,37 @@ def poly_divmod(X, Y):
     remainder.coeffs = num[:]
     return quotient, remainder
 
+def is_prime(n):
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def make_poly(N, coeffs):
+    """Create a polynomial in x."""
+    x = sym.Symbol('x')
+    coeffs = list(reversed(coeffs))
+    y = 0
+    for i in range(N):
+        y += (x**i)*coeffs[i]
+    y = sym.poly(y)
+    return y
+
+def invertmodprime(F,N,p):
+    f_poly = make_poly(N,F.coeffs)
+    x = sym.Symbol('x')
+    Fp = sym.polys.polytools.invert(f_poly,x**N-1,domain=GF(p, symmetric=False))
+    return Fp
 
 #________________________TESTING___________________________
 
 # note that n = len(F.coeffs) = 6
-F = Zx([3,1,4,1,5,9])       
-G = Zx([2,7,1])
+#F = Zx([3,1,4,1,5,9])       
+#G = Zx([2,7,1])
 
-#F = Zx([1,-1,1,1,-1])       
-#G = Zx([-1,0,0,0,0,0,0,1])
+G = Zx([1,-1,1,1,-1])       
+#F = Zx([-1,0,0,0,0,0,0,1])
+F = Zx([1,0,-1,1,1,0,-1])
 
 
 print('F = ',end='')
@@ -81,6 +106,11 @@ X = deepcopy(F)
 Y = deepcopy(G)
 quotient, remainder = poly_divmod(X, Y)
 print("Quotient: {}, Remainder: {}\n".format(quotient.print_polynomial(), remainder.print_polynomial()))
+
+print('Invert_polynomial(F,N,p) = ',end='')
+result_poly_invert = invertmodprime(F,7,3)
+print(result_poly_invert)
+
 
 print('Cyclic_Convolution(F,G,n) = ',end='')
 result_conv = cyclic_convolution(F,G,3)
