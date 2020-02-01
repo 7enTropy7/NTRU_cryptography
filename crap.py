@@ -293,9 +293,10 @@ def make_poly(N, coeffs):
 N = 7
 p = 3
 q = 41
+
 #-x^4 + x^3 + x^2 - x + 1
+#f = [-1,1,1,-1,1]
 f = [1,0,-1,1,1,0,-1]
-#f = [1,-1,1,1,-1]
 
 f_poly = make_poly(N,f)
 
