@@ -61,32 +61,29 @@ def is_prime(n):
             return False
     return True
 
-def make_poly(N, coeffs):
-    """Create a polynomial in x."""
+def make_poly(coeffs):
     x = sym.Symbol('x')
+    n = len(coeffs)
     coeffs = list(reversed(coeffs))
     y = 0
-    for i in range(N):
+    for i in range(n):
         y += (x**i)*coeffs[i]
     y = sym.poly(y)
     return y
 
 def invertmodprime(F,N,p):
-    f_poly = make_poly(N,F.coeffs)
+    Fp = Zx([])
+    f = F.coeffs[::-1]
+    f_poly = make_poly(f)
     x = sym.Symbol('x')
-    Fp = sym.polys.polytools.invert(f_poly,x**N-1,domain=GF(p, symmetric=False))
+    t = sym.polys.polytools.invert(f_poly,x**N-1,domain=GF(p, symmetric=False))
+    Fp.coeffs = t.all_coeffs()[::-1]
     return Fp
 
 #________________________TESTING___________________________
 
-# note that n = len(F.coeffs) = 6
-#F = Zx([3,1,4,1,5,9])       
-#G = Zx([2,7,1])
-
-G = Zx([1,-1,1,1,-1])       
-#F = Zx([-1,0,0,0,0,0,0,1])
-F = Zx([1,0,-1,1,1,0,-1])
-
+F = Zx([1,-1,1,1,-1])
+G = Zx([1,0,1])       
 
 print('F = ',end='')
 print(F.print_polynomial())
@@ -109,11 +106,10 @@ print("Quotient: {}, Remainder: {}\n".format(quotient.print_polynomial(), remain
 
 print('Invert_polynomial(F,N,p) = ',end='')
 result_poly_invert = invertmodprime(F,7,3)
-print(result_poly_invert)
-
+print(result_poly_invert.print_polynomial())
 
 print('Cyclic_Convolution(F,G,n) = ',end='')
-result_conv = cyclic_convolution(F,G,3)
+result_conv = cyclic_convolution(F,G,7)
 print(result_conv.print_polynomial())
 
 print('Balanced Modulus = ',end='')
