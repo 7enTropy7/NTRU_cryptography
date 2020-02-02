@@ -92,6 +92,7 @@ def invertmodpowerof2(F,N,q):                # n is the no. of coeff in F
     g = Zx([])
     if isPowerOfTwo(q) == False:
         print('q has to be a power of 2') 
+        return None
     g = invertmodprime(F,N,2)
     while True:
         r = balancedmod(cyclic_convolution(F,g,N),q,N)
@@ -107,6 +108,30 @@ def invertmodpowerof2(F,N,q):                # n is the no. of coeff in F
         g = balancedmod(cyclic_convolution(g,l,N),q,N)
     return g
 
+def generate_keypair(p,q,d,N):
+    while True:
+        try:
+            F = Zx([])
+            F.randompoly(d,N)
+
+            f3 = invertmodprime(F,N,p)
+            Fq = invertmodpowerof2(F,N,q)
+            break
+        except:
+            pass
+    # print(F.print_polynomial())
+    # print(f3.print_polynomial())
+    # print(Fq.print_polynomial())
+
+    g = Zx([])
+    g.randompoly(d,N)
+    r = Zx([p])
+    t = cyclic_convolution(Fq,g,N).multiply(r)
+    public_key = balancedmod(t,q,N)
+    secret_key = F,f3
+    return public_key,secret_key    
+    
+
 #________________________TESTING___________________________
 
 F = Zx([1,-1,1,1,-1])
@@ -115,6 +140,7 @@ G = Zx([1,0,1])
 N = 7
 p = 3
 q = 256
+d = 5
 
 print('F = ',end='')
 print(F.print_polynomial())
@@ -156,3 +182,7 @@ print('Random Polynomial = ',end='')
 random_polynomial = Zx([])
 random_polynomial.randompoly(5,7)
 print(random_polynomial.print_polynomial())
+
+print('Generate_Kaypair(p,q,d,N) = ',end='')
+public_key, private_key = generate_keypair(p,q,d,N)
+print(public_key.print_polynomial())
