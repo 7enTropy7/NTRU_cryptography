@@ -82,7 +82,7 @@ def invertmodprime(F,N,p):
 
 def Log2(x): 
     if x == 0: 
-        return false 
+        return False 
     return (math.log10(x)/math.log10(2)) 
   
 def isPowerOfTwo(n): 
