@@ -13,9 +13,9 @@ def cyclic_convolution(F,G,n):
         t.coeffs[i%n] += result.coeffs[i]    
     return t
 
-def balancedmod(F,q,n):     # n is the no. of coeff in F
+def balancedmod(F,q,N):     # n is the no. of coeff in F
     result = Zx([])
-    for i in range(n):
+    for i in range(N):
         result.coeffs.append(((F.coeffs[i] + q//2) % q) - q//2)
     return result
 
