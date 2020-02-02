@@ -119,9 +119,6 @@ def generate_keypair(p,q,d,N):
             break
         except:
             pass
-    # print(F.print_polynomial())
-    # print(f3.print_polynomial())
-    # print(Fq.print_polynomial())
 
     g = Zx([])
     g.randompoly(d,N)
