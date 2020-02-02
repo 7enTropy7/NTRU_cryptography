@@ -71,7 +71,7 @@ def make_poly(coeffs):
     y = sym.poly(y)
     return y
 
-def invertmodprime(F,N,p):
+def invertmodprime(F,N,p):                  # n is the no. of coeff in F
     Fp = Zx([])
     f = F.coeffs[::-1]
     f_poly = make_poly(f)
@@ -88,7 +88,7 @@ def Log2(x):
 def isPowerOfTwo(n): 
     return (math.ceil(Log2(n)) == math.floor(Log2(n))); 
 
-def invertmodpowerof2(F,N,q):
+def invertmodpowerof2(F,N,q):                # n is the no. of coeff in F
     g = Zx([])
     if isPowerOfTwo(q) == False:
         print('q has to be a power of 2') 
