@@ -3,7 +3,7 @@ from random import randrange
 from copy import deepcopy
 import sympy as sym
 from sympy import GF
-
+import math
 
 def cyclic_convolution(F,G,n):
     result = F.multiply(G)
@@ -80,10 +80,41 @@ def invertmodprime(F,N,p):
     Fp.coeffs = t.all_coeffs()[::-1]
     return Fp
 
+def Log2(x): 
+    if x == 0: 
+        return false; 
+    return (math.log10(x)/math.log10(2)); 
+  
+def isPowerOfTwo(n): 
+    return (math.ceil(Log2(n)) == math.floor(Log2(n))); 
+
+def invertmodpowerof2(F,N,q):
+    g = Zx([])
+    if isPowerOfTwo(q) == False:
+        print('q has to be a power of 2') 
+    g = invertmodprime(F,N,2)
+    while True:
+        r = balancedmod(cyclic_convolution(F,g,N),q,N)
+        flag = 0
+        for i in range(1,len(r.coeffs)):
+            if r.coeffs[i]!=0:
+                flag =1 
+                break 
+        if r.coeffs[0] == 1 and flag == 0: 
+            break
+        e = Zx([2])
+        l = e.add(r.multiply_single_term(-1,0))
+        g = balancedmod(cyclic_convolution(g,l,N),q,N)
+    return g
+
 #________________________TESTING___________________________
 
 F = Zx([1,-1,1,1,-1])
 G = Zx([1,0,1])       
+
+N = 7
+p = 3
+q = 256
 
 print('F = ',end='')
 print(F.print_polynomial())
@@ -105,8 +136,13 @@ quotient, remainder = poly_divmod(X, Y)
 print("Quotient: {}, Remainder: {}\n".format(quotient.print_polynomial(), remainder.print_polynomial()))
 
 print('Invert_polynomial(F,N,p) = ',end='')
-result_poly_invert = invertmodprime(F,7,3)
-print(result_poly_invert.print_polynomial())
+Fp = invertmodprime(F,N,p)
+print(Fp.print_polynomial())
+
+
+print('invertmodpowerof2(F,N,q) = ',end='')
+Fq = invertmodpowerof2(F,N,q)
+print(cyclic_convolution(F,Fq,N).print_polynomial())
 
 print('Cyclic_Convolution(F,G,n) = ',end='')
 result_conv = cyclic_convolution(F,G,7)
