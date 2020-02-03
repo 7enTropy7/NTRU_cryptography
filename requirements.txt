@@ -1,2 +1,2 @@
-matplotlib==3.0.2
 sympy==1.4
+matplotlib==3.0.2
