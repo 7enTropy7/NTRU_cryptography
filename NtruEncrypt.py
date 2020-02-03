@@ -4,6 +4,7 @@ from copy import deepcopy
 import sympy as sym
 from sympy import GF
 import math
+import functools
 
 def cyclic_convolution(F,G,n):
     result = F.multiply(G)
@@ -137,5 +138,11 @@ def encrypt(message,public_key,d,N,q):
 def decrypt(cipher_text,private_key,p,q,N):
     F, F_inverse = private_key
     a = balancedmodulus(cyclic_convolution(cipher_text,F,N),q,N)
-    decrypted_message = balancedmodulus(cyclic_convolution(a,F_inverse,N),3,N)
+    decrypted_message = balancedmodulus(cyclic_convolution(a,F_inverse,N),p,N)
     return decrypted_message
+
+def cross_check(decrypted_message,plain_text):
+    if functools.reduce(lambda i,j:i and j,map(lambda m,k:m == k,plain_text.coeffs,decrypted_message.coeffs),True):
+        print ("Successful!") 
+    else : 
+        print ("Error!!!") 
