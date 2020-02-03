@@ -22,3 +22,5 @@ print(cipher_text.print_polynomial())
 print('Decrypted = ',end='')
 decrypted_message = decrypt(cipher_text,private_key,p,q,N)
 print(decrypted_message.print_polynomial())
+
+cross_check(decrypted_message,plain_text)
