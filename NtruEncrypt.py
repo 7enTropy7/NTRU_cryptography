@@ -131,7 +131,7 @@ def generate_keypair(p,q,d,N):
 
 def encrypt(message,public_key,d,N,q):
     r = Zx([])
-    r.randompoly(d,N)
+    r.randompoly(d,N)           # r is the binding value
     cipher_text = balancedmodulus(cyclic_convolution(public_key,r,N).add(message),q,N)
     return cipher_text
 
