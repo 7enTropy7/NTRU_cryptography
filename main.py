@@ -14,9 +14,6 @@ elliptic_b = int(input("Enter B: "))
 
 character_polynomials,N = koblitz_encoder(message,elliptic_a,elliptic_b) 
 
-# for element in character_polynomials:
-#     print(element.print_polynomial())
-
 public_key,private_key = generate_keypair(p,q,d,N)
 
 print('\nPublic Key = ',end='')
