@@ -4,7 +4,7 @@ from num_to_polynomial import *
 
 d = 5
 p = 3
-q = 256
+q = 128
 
 message = input("Enter Message: ")
 
