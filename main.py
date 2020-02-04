@@ -1,26 +1,39 @@
 from NtruEncrypt import *
 from Polynomial import Zx
+from num_to_polynomial import *
 
-N = 7
 d = 5
 p = 3
 q = 256
 
+message = input("Enter Message: ")
+
+print('Curve Parameters')
+elliptic_a = int(input("Enter A: "))
+elliptic_b = int(input("Enter B: "))
+
+character_polynomials,N = koblitz_encoder(message,elliptic_a,elliptic_b) 
+
+# for element in character_polynomials:
+#     print(element.print_polynomial())
+
 public_key,private_key = generate_keypair(p,q,d,N)
 
-print('Public Key = ',end='')
+print('\nPublic Key = ',end='')
 print(public_key.print_polynomial())
 
-print('Message = ',end='')              #-x^6 - x^4 + x^2 + 1
-plain_text = Zx([1,0,1,0,-1,0,-1])
-print(plain_text.print_polynomial())
+print('\nEncrypted = ')
+cipher_polys = []
+for element in character_polynomials:
+    cipher_text = encrypt(element,public_key,d,N,q)
+    cipher_polys.append(cipher_text)
+    print(cipher_text.print_polynomial())
 
-print('Encrypted = ',end='')
-cipher_text = encrypt(plain_text,public_key,d,N,q)
-print(cipher_text.print_polynomial())
-
-print('Decrypted = ',end='')
-decrypted_message = decrypt(cipher_text,private_key,p,q,N)
-print(decrypted_message.print_polynomial())
-
-cross_check(decrypted_message,plain_text)
+print('\nDecrypted = ',end='')
+dec_w = []
+for element in cipher_polys:
+    decrypted_message = decrypt(element,private_key,p,q,N)
+    #print(decrypted_message.print_polynomial())
+    dec_w.append(decrypted_message.coeffs)
+decrypted_plain_text = koblitz_decoder(points_decoder(dec_w))
+print(decrypted_plain_text)
