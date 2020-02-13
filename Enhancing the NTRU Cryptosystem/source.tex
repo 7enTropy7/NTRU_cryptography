@@ -1,0 +1,205 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[top=0.5in,left=0.5in,right=0.5in,bottom=0.5in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[english]{babel}
+\usepackage{caption}
+\usepackage{graphicx}
+\graphicspath{{}}
+
+\newtheorem{theorem}{Theorem}
+
+\title{Enhancing the NTRU cryptosystem}
+
+\author{
+    \begin{tabular}[t]{c@{\extracolsep{1em}}c} 
+    Awnon K. Bhowmik  & Unnikrishnan R. Menon\\
+    \begin{small}Department of Mathematics and Computer Science\end{small} & \begin{small}Department of Electrical and Electronics\end{small} \\ 
+    \begin{small}CUNY York College\end{small} & \begin{small}Vellore Institute of Technology\end{small} \\
+    \begin{small}awnon.bhowmik@yorkmail.cuny.edu\end{small} & \begin{small}unnikrishnanr.menon2017@vitstudent.ac.in\end{small}
+    \end{tabular}
+}
+
+
+\date{}
+
+%\notag
+\begin{document}
+\maketitle
+\begin{abstract}
+    \begin{flushleft}
+    NRTU is an open-source public key cryptosystem that uses lattice-based cryptography to encrypt and decrypt data. It consists of two algorithms, NTRUEncrypt, which is used for encryption, and NTRUSign which is used for digital signatures. Unlike other popular public-key cryptosystems, it is resistant to attacks using Shor's Algorithm and its performance has been shown to be significantly greater. This paper talks about how Koblitz encoding from Elliptic Curve Cryptography (ECC) can be used to convert each character in a dataset to a point on a elliptic curve. A Pythagoras Theorem analogy is used to turn the point to a single number, which is converted to a sequence of coefficients in $\mathbb{Z}$. A polynomial is then generated for each of these characters. Then the polynomial is reduced, and we show that choosing appropriate parameters for the cryptosystem can make it highly secure and that the decryption algorithm turns out taking exponential time. Since each character is represented by its own polynomial, it increases obscurity thereby increasing the time for decryption and thus the security level. We also implement a form of data compression and test whether data compression $\to$ encryption $\to$ decryption $\to$ data expansion results in original data with no or minimal loss.
+    \end{flushleft}
+\end{abstract}
+
+\section{Why Lattice Cryptography}
+\begin{flushleft}
+\textbf{The real reason}$^{\cite{security_2017}}$
+\begin{itemize}
+    \item In 1994, Shor's Algorithm break RSA and ECC with quantum computers
+    \item 2015, NSA announcement: prepare for the quantum apocalypse
+    \item 2017, NIST call for competition/standardization
+    \item 2030, predicted general purpose quantum computers
+\end{itemize}
+
+\textbf{Further usefulness}$^{\cite{security_2017}}$
+\begin{itemize}
+    \item Good understanding of underlying hard problem
+    \item Fast, parallelable, hardware friendly
+    \item Numerous applications: FHE, ABE, MMap, Obfuscation...
+\end{itemize}
+
+\textbf{Data vaulting attack}$^{\cite{security_2017}}$
+\begin{itemize}
+    \item A.k.a. harvest-then-decrypt attack
+    \item Data needs to be secret for, lets say, 30 years
+    \item Quantum computer arrives in, lets say, 15 years
+    \item Perhaps the most practical attack in cryptography
+\end{itemize}
+
+\newpage
+\textbf{Encrypt Schemes}$^{\cite{security_2017}}$
+\begin{itemize}
+    \item NTRUEncrypt - standardized by IEEE and ASC X9
+\end{itemize}
+
+\textbf{Signature Schemes}$^{\cite{security_2017}}$
+\begin{itemize}
+    \item BLISS (NTRU)
+    \item pqNTRUSign (NTRU)
+\end{itemize}
+
+This paper focuses on the NTRUEncrypt and pqNTRUSign algorithm also known as NTRUSign algorithm.
+\end{flushleft}
+
+\section{Koblitz Encoding Algorithm for ECC}
+\begin{flushleft}
+	The encoding algorithm for ECC is as follows...\\
+	\begin{itemize}
+		\item Given a message $M$, convert each character $m_k$ into a number $a_k$ using Unicode, where $b=2^{16}$ and $0<a_k<2^{16}$
+		\item Convert the message $M$ into an integer using $$m=\sum_{k=1}^n a_kb^{k-1}$$. In practice we choose an $n$ to be less than or equal to $160$ such that $m$ satisfies $m\le 2^{16\cdot 160}<p$.
+		\item Fix a number $d$ such that $d\le \dfrac{p}{m}$. In practice we choose the prime $p$ large enough so that we can allow $d=100$.
+		\item For integers $j=0,1,2,\cdots d-1$  we do the following loop
+		\begin{itemize}
+			\item Compute the $x$ coordinate of a point on the elliptic curve as $x_j=(dm+j)\mod p$ where $m=\bigg\lfloor{\dfrac{x_j}{d}}\bigg\rfloor$
+			\item Compute $s_j=(x_j^3+Ax+B)\mod p$
+			\item If $\left(s_j\right)^{\frac{p+1}{2}}\equiv s_j\mod p$, then define $y$ coordinate of a point on the elliptic curve as $y_j=\left(s_j\right)^{\frac{p+1}{4}}\mod p$. Return the point $(x_j,y_j)$.
+		\end{itemize}
+	\end{itemize}
+	
+	Thus we are able to encode our message $M$, as an element of the abelian group $G=E\left(\mathbb{F}_p\right)$ $^{[9]}$
+\end{flushleft}
+
+\section{NTRUEncrypt}
+NTRU operations are based on objects in a truncated polynomial ring $R=\mathbb{Z}[X]/(X^N-1)$ with convolution multiplication and all polynomials in the ring have integer coefficients and degree at most $N-1$:
+\begin{equation}
+    \textbf{c}(X)=c_0+c_1X+c_2X^2+\cdots+c_{N-1}X^{N-1}
+\end{equation}
+
+\section{Equivalence class modulo 3}
+Any number divided by 3 can result in remainders $\left\{0,1,2\right\}$. So any number divided by 3 is one of $3r,3r+1,3r+2$. This is useful in constructing the trinary basis $\left\{-1,0,1\right\}^{\text{dim}}$. The elements in the basis forms the coefficients of the polynomial $(1)$.
+
+\newpage
+\begin{theorem}
+Let $R\subseteq S\times S$ be an equivalence class on a set $S$. Then the set of $\mathcal{R}$-classes constitutes the whole of $S$
+\end{theorem}
+
+\begin{proof}
+    \notag
+    \begin{align}
+        \forall x\in S:x\in[x]_{\mathcal{R}}&\qquad\text{Definition of equivalence class}\\
+        \lnot\left(\exists x\in S:x\notin [x]_{\mathcal{R}}\right)&\qquad\text{Assertion of universality}\\
+        \lnot\left(\exists x\in S: x\notin\bigcup[x]_{\mathcal{R}}\right)&\qquad\text{Definition of set union}\\
+        \forall x\in S:x\in\bigcup S/\mathcal{R}&\qquad\text{Assertion of universality}\\
+        S\subseteq\bigcup S/\mathcal{R}&\qquad\text{Definition of subset}
+    \end{align}
+    
+    Also:
+    \begin{align}
+        \forall X\in S/\mathcal{R}:X\subseteq S&\qquad\text{Definition of equivalence class}\\
+        \bigcup S/\mathcal{R}\subseteq S&\qquad\text{Union is smallest superset: general result}
+    \end{align}
+    By definition of set equality
+    $$\bigcup S/\mathcal{R}=S$$
+    and so the set of all $\mathcal{R}$-classes constitutes the whole of $S^{\cite{proofwiki}}$.
+\end{proof}
+
+\begin{flushleft}
+    This theorem tells us that in our case, we are using $\mod 3$ to generate coefficients from the set $\left\{-1,0,1\right\}$ which is basically the numbers of the form $3r-1,3r,3r+1$. It means that the union of all these equivalence classes spans the entire set of integers before modulo reduction.
+\end{flushleft}
+
+\section{Algorithm Flow Diagram}
+\begin{center}
+    \includegraphics[scale=0.8]{"Algorithm Flow Diagram".jpg}\captionof*{"Algorithm Flow Diagram".jpg}{Fig 1. \textbf{Algorithm}}
+\end{center}
+
+\section{An attempt on loss less encoding}
+Messages encrypted by the Koblitz method results in a long polynomial. It is safe to assume that the length of this polynomial increases exponentially with the length of message. Hence, a modification to the aforementioned algorithm in Fig 1. was attempted by converting the polynomials into a gray scale map to obtain some sort of data compression. Following sample results were obtained.
+
+\begin{center}
+		\includegraphics[scale=0.6]{"Attempt 1".jpg}\captionof*{"Attempt 1".png}{\textbf{Attempt 1}}
+		\includegraphics[scale=0.6]{"Attempt 2".jpg}\captionof*{"Attempt 2".png}{\textbf{Attempt 2}}
+\end{center}
+
+\begin{flushleft}
+The first attempt involved PNG image format and produced results that were correct up to 2 decimal places only. This means that this format produced a large percentage error. Another thing to notice is that this involved only 8 bit precision unsigned integers. However, using TIFF image format with 64 bit precision unsigned integers resulted in a much better match between the encrypted and the decrypted matrix. Following is a sample gray scale map that was generated.
+\end{flushleft}
+
+\begin{center}
+	\includegraphics[scale=0.75]{"grayscale map".jpg}\captionof*{"grayscale map".jpg}{Fig 2. \textbf{Gray scale map of data compression}}
+\end{center}
+
+\begin{flushleft}
+\textbf{Remark:} It is to be noted that every character in our input string is treated differently, i.e. if we write the message "banana", then each of the characters have a different random polynomial. The polynomials for all 3 a's and both n's are distinct. This is what makes this cryptosystem more secure.
+\end{flushleft}
+
+\section{Finite fields in NTRU}
+\begin{flushleft}
+Field theory is an essential topic that forms the mathematical foundation of many cryptosystems. The NTRU cryptosystem is no different. The operations involved in our procedure are$^{\cite{latticehacks}}$
+
+\begin{itemize}
+	\item $p,q$ primes, where $p<q$
+	\item addition - $f(x)+g(x)$
+	\item multiplication - $f(x)\cdot g(x)$
+	\item cyclic convolution - $f(x)\cdot g(x) \mod (x^n-1)$
+	\item modular reduction - $\left(f(x_i)+\dfrac q2\right)\mod q - \dfrac q2 \quad \forall i\le n$. $n$ is the $\deg(f(x))$
+\end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+A \textbf{field} $F$, sometimes denoted $\left\{F,+,\times\right\}$ is a set of elements with two binary operation, called \textit{addition} and \textit{multiplication}, such as for all $a,b,c$ in $F$ the following axioms are obeyed.$^{\cite{stallings2017}}$
+\end{flushleft}
+
+\subsection{Properties of finite fields}
+\begin{flushleft}
+Consider a finite field $\left\{F,+,\times\right\}$. Let $x,y$ be any two arbitrary elements in the field. Then the following properties hold true.
+\begin{enumerate}
+	\item \textbf{Commutativity}\qquad\quad $\begin{cases}x+y&=y+x\\x\times y&=y\times x\end{cases}$
+	\item \textbf{Associativity}\qquad\qquad\, $\begin{cases}x+(y+z)&=(x+y)+z\\x\times(y\times z)&=(x\times y)\times z\end{cases}$
+	\item \textbf{Identity}\qquad\qquad\qquad\quad $\begin{cases}0\in F& x+0=0+x=x\\1\in F&1\times x=x\times 1=x\end{cases}$
+	\item \textbf{Additive Inverse}\qquad\quad\, For any $x\in F$, there exists $-x\in F$ such that $x+(-x)=0$
+	\item \textbf{Distributivity}\qquad\qquad\quad $(x+y)\times z=x\times z+y\times z$
+	\item \textbf{Multiplicative Inverse}\quad For any $x\in F,x\neq 0, \exists x^{-1}\in F$ such that $x\times x^{-1}=1$
+\end{enumerate}
+\end{flushleft}
+
+\begin{flushleft}
+It can be shown that the order of a finite field (number of elements in the field) must be a power of a prime $p^n$, where n is a positive integer. The finite field of order $p^n$ is generally written $GF(p^n)$; $GF$ stands for Galois field, in honor of the mathematician who first studied finite fields. Two special cases are of interest for our purposes. For $n = 1$, we have the finite field $GF(p)$; this finite field has a different structure than that for finite fields with $n>1$ and is studied in this section. For finite fields of the form $GF(p^n), GF(2^n)$ fields are of particular cryptographic interest.${^{\cite{stallings2017}}}$
+\end{flushleft}
+
+\section{Future Work}
+\begin{flushleft}
+We are planning to wrap up the entire program into a pip install package which would be available for general public use. We would also like to incorporate this crypto system as a security layer for a web socket based client server chat app, built with Tkinter.
+\end{flushleft}
+\newpage
+\bibliographystyle{ieeetran}
+\bibliography{References}
+
+\end{document}

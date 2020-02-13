@@ -1,0 +1,9 @@
+\BOOKMARK [1][-]{section.1}{Why Lattice Cryptography}{}% 1
+\BOOKMARK [1][-]{section.2}{Koblitz Encoding Algorithm for ECC}{}% 2
+\BOOKMARK [1][-]{section.3}{NTRUEncrypt}{}% 3
+\BOOKMARK [1][-]{section.4}{Equivalence class modulo 3}{}% 4
+\BOOKMARK [1][-]{section.5}{Algorithm Flow Diagram}{}% 5
+\BOOKMARK [1][-]{section.6}{An attempt on loss less encoding}{}% 6
+\BOOKMARK [1][-]{section.7}{Finite fields in NTRU}{}% 7
+\BOOKMARK [2][-]{subsection.7.1}{Properties of finite fields}{section.7}% 8
+\BOOKMARK [1][-]{section.8}{Future Work}{}% 9
