@@ -194,9 +194,26 @@ Consider a finite field $\left\{F,+,\times\right\}$. Let $x,y$ be any two arbitr
 It can be shown that the order of a finite field (number of elements in the field) must be a power of a prime $p^n$, where n is a positive integer. The finite field of order $p^n$ is generally written $GF(p^n)$; $GF$ stands for Galois field, in honor of the mathematician who first studied finite fields. Two special cases are of interest for our purposes. For $n = 1$, we have the finite field $GF(p)$; this finite field has a different structure than that for finite fields with $n>1$ and is studied in this section. For finite fields of the form $GF(p^n), GF(2^n)$ fields are of particular cryptographic interest.${^{\cite{stallings2017}}}$
 \end{flushleft}
 
+\section{Experiments by varying parameters}
+\begin{flushleft}
+A function was written on Jupyter Notebook to test out the relationship between string length $s$ (x-axis) and time of encryption/decryption $t_{\text{enc}}/t_{\text{dec}}$ (y-axis).
+\begin{center}
+	\includegraphics[scale=0.75]{"strlen vs time".png}\captionof*{"strlen vs time".png}{Fig 3. \textbf{string length vs time to encrypt}}
+\end{center}
+
+A best fit shape through these points is a straight line through the \textit{origin}. It can be safely assumed that for an arbitrary string length $s$, time to encrypt $t_{\text{enc}}$ and time to decrypt $t_{\text{dec}}$, we can write
+\end{flushleft}
+
+\begin{itemize}
+	\centering
+	\item $t_{\text{enc}}\propto s$
+	\item $t_{\text{dec}}\propto s$
+\end{itemize}
+
+
 \section{Future Work}
 \begin{flushleft}
-We are planning to wrap up the entire program into a pip install package which would be available for general public use. NTRU cryptosystem has been around for a long time but there is still no official implementation of this on libraries like pycryptodome. This could act as a great security layer against post quantum cryptography. We would also like to incorporate this crypto system as a security layer for a web socket based client server chat app, built with Tkinter.
+We are planning to wrap up the entire program into a pip install package which would be available for general public use. NTRU algorithm has been around for a while but there is still no official implementation of this algorithm in libraries such as pycryptodome. We would love to see our version of NTRU becoming a part of this library. It will serve as a great security layer against post quantum cryptography. We would also like to incorporate this crypto system as a security layer for a web socket based client server chat app, built with Tkinter.
 \end{flushleft}
 \newpage
 \bibliographystyle{ieeetran}
