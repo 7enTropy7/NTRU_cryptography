@@ -7,4 +7,7 @@
 \BOOKMARK [1][-]{section.7}{Finite fields in NTRU}{}% 7
 \BOOKMARK [2][-]{subsection.7.1}{Properties of finite fields}{section.7}% 8
 \BOOKMARK [1][-]{section.8}{Experiments by varying parameters}{}% 9
-\BOOKMARK [1][-]{section.9}{Future Work}{}% 10
+\BOOKMARK [2][-]{subsection.8.1}{String length vs time to encrypt/decrypt}{section.8}% 10
+\BOOKMARK [2][-]{subsection.8.2}{Valid elliptic parameters vs String length}{section.8}% 11
+\BOOKMARK [1][-]{section.9}{Conjecture}{}% 12
+\BOOKMARK [1][-]{section.10}{Future Work}{}% 13
