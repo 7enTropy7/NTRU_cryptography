@@ -34,6 +34,11 @@ O.~Security, ``A short review of the ntru cryptosystem,'' Jul 2017. [Online].
   \url{https://proofwiki.org/wiki/Union_of_Equivalence_Classes_is_Whole_Set}
 \BIBentrySTDinterwordspacing
 
+\bibitem{ajtai1996generating}
+M.~Ajtai, ``Generating hard instances of lattice problems,'' in
+  \emph{Proceedings of the twenty-eighth annual ACM symposium on Theory of
+  computing}, 1996, pp. 99--108.
+
 \bibitem{latticehacks}
 \BIBentryALTinterwordspacing
 ``Ntru.'' [Online]. Available: \url{https://latticehacks.cr.yp.to/ntru.html}
@@ -43,5 +48,11 @@ O.~Security, ``A short review of the ntru cryptosystem,'' Jul 2017. [Online].
 W.~Stallings, ``The principles and practice of cryptography and network
   security 7th edition, isbn-10: 0134444280,'' \emph{Pearson Education},
   vol.~20, 2017.
+
+\bibitem{ntru}
+\BIBentryALTinterwordspacing
+A.~K. Bhowmik and U.~R. Menon, ``Ntru cryptography,'' 2020. [Online].
+  Available: \url{https://github.com/7enTropy7/NTRU_cryptography}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

@@ -2,12 +2,13 @@
 \BOOKMARK [1][-]{section.2}{Koblitz Encoding Algorithm for ECC}{}% 2
 \BOOKMARK [1][-]{section.3}{NTRUEncrypt}{}% 3
 \BOOKMARK [1][-]{section.4}{Equivalence class modulo 3}{}% 4
-\BOOKMARK [1][-]{section.5}{Algorithm Flow Diagram}{}% 5
-\BOOKMARK [1][-]{section.6}{An attempt on loss less encoding}{}% 6
-\BOOKMARK [1][-]{section.7}{Finite fields in NTRU}{}% 7
-\BOOKMARK [2][-]{subsection.7.1}{Properties of finite fields}{section.7}% 8
-\BOOKMARK [1][-]{section.8}{Experiments by varying parameters}{}% 9
-\BOOKMARK [2][-]{subsection.8.1}{String length vs time to encrypt/decrypt}{section.8}% 10
-\BOOKMARK [2][-]{subsection.8.2}{Valid elliptic parameters vs String length}{section.8}% 11
-\BOOKMARK [1][-]{section.9}{Conjecture}{}% 12
-\BOOKMARK [1][-]{section.10}{Future Work}{}% 13
+\BOOKMARK [1][-]{section.5}{Lattice Cryptography}{}% 5
+\BOOKMARK [1][-]{section.6}{Algorithm Flow Diagram}{}% 6
+\BOOKMARK [1][-]{section.7}{An attempt on loss less encoding}{}% 7
+\BOOKMARK [1][-]{section.8}{Finite fields in NTRU}{}% 8
+\BOOKMARK [2][-]{subsection.8.1}{Properties of finite fields}{section.8}% 9
+\BOOKMARK [1][-]{section.9}{Experiments by varying parameters}{}% 10
+\BOOKMARK [2][-]{subsection.9.1}{String length vs time to encrypt/decrypt}{section.9}% 11
+\BOOKMARK [2][-]{subsection.9.2}{Valid elliptic parameters vs String length}{section.9}% 12
+\BOOKMARK [1][-]{section.10}{Conjecture}{}% 13
+\BOOKMARK [1][-]{section.11}{Future Work}{}% 14

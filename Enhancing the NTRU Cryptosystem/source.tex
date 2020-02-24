@@ -136,7 +136,21 @@ Let $R\subseteq S\times S$ be an equivalence class on a set $S$. Then the set of
 \begin{flushleft}
     This theorem tells us that in our case, we are using $\mod 3$ to generate coefficients from the set $\left\{-1,0,1\right\}$ which is basically the numbers of the form $3r-1,3r,3r+1$. It means that the union of all these equivalence classes spans the entire set of integers before modulo reduction.
 \end{flushleft}
+ 
+\section{Lattice Cryptography}
+\textbf{What is a lattice?}$^{\cite{security_2017}}$
+\begin{flushleft}
+A \textbf{lattice} consists of all the integral combinations of $d\le n$ linearly independent vectors over $\mathbb{R}$. $$\mathcal{L}=\mathbb{Z}\textbf{b}_1+\cdots+\mathbb{Z}\textbf{b}_d=\left\{\lambda_1\textbf{b}_1+\cdots+\lambda_n\textbf{b}_n:\quad \lambda_i\in\mathbb{Z}\right\}$$ where $d$ is the dimension and $\textbf{B}=\left(\textbf{b}_1,\textbf{b}_2,\cdots,\textbf{b}_n\right)$ is a basis. Here is an example $$\textbf{B}=\left(\begin{array}{ccc}5&\frac{1}{2}&\sqrt{3}\\\frac{3}{5}&\sqrt{2}&1
+\end{array}\right)$$
 
+Here $d=2,n=3$ and hence $d\le n$
+\end{flushleft}
+
+\begin{itemize}
+	\item All crypto talks begin with an image of a dim-2 lattice
+	\item There is an infinitude of bases which is formed due to matrix multiplication of \textbf{B} and some other matrix
+	\item It involves solving the shortest vector problem (SVP). The exact version of the problem is only known to be NP-hard for randomized reductions.$^{\cite{ajtai1996generating}}$ We have used something similar in our algorithm, but here we calculate the sum of squares rather than the $L^2$ norm.
+\end{itemize}
 \section{Algorithm Flow Diagram}
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
 \tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=3cm, text centered, draw=black, fill=blue!30]
@@ -295,9 +309,9 @@ We observed that for each of the $100$ test cases, the encrypt-decrypt function 
 
 \section{Future Work}
 \begin{flushleft}
-We are planning to wrap up the entire program into a pip install package which would be available for general public use. NTRU algorithm has been around for a while but there is still no official implementation of this algorithm in libraries such as pycryptodome. We would love to see our version of NTRU becoming a part of this library. It will serve as a great security layer against post quantum cryptography. We would also like to incorporate this crypto system as a security layer for a web socket based client server chat app, built with Tkinter.
+We are planning to wrap up the entire program into a pip install package which would be available for general public use. NTRU algorithm has been around for a while but there is still no official implementation of this algorithm in libraries such as pycryptodome. We would love to see our version of NTRU becoming a part of this library. It will serve as a great security layer against post quantum cryptography. We would also like to incorporate this crypto system as a security layer for a web socket based client server chat app, built with Tkinter. For the moment, the work we have done so far has been compiled into a repository$^{\cite{ntru}}$
 \end{flushleft}
-\newpage
+%\newpage
 \bibliographystyle{ieeetran}
 \bibliography{References}
 
