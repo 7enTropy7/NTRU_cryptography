@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Why Lattice Cryptography}{}% 1
+\BOOKMARK [1][-]{section.2}{Koblitz Encoding \046 Decoding Algorithm}{}% 2
+\BOOKMARK [1][-]{section.3}{NTRUEncrypt}{}% 3
+\BOOKMARK [1][-]{section.4}{Equivalence class modulo 3}{}% 4
+\BOOKMARK [1][-]{section.5}{Lattice Cryptography}{}% 5
+\BOOKMARK [1][-]{section.6}{Flow Diagram for Proposed Algorithm}{}% 6
+\BOOKMARK [1][-]{section.7}{Proposed Algorithm}{}% 7
+\BOOKMARK [1][-]{section.8}{An attempt on loss less encoding}{}% 8
+\BOOKMARK [1][-]{section.9}{Result}{}% 9
+\BOOKMARK [1][-]{section.10}{Experiments by varying parameters}{}% 10
+\BOOKMARK [2][-]{subsection.10.1}{String length vs time to encrypt/decrypt}{section.10}% 11
+\BOOKMARK [2][-]{subsection.10.2}{Valid elliptic parameters vs String length}{section.10}% 12
+\BOOKMARK [1][-]{section.11}{Conjecture}{}% 13
+\BOOKMARK [1][-]{section.12}{Future Work}{}% 14
+\BOOKMARK [1][-]{section.13}{Conclusion}{}% 15
