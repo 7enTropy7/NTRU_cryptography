@@ -1,6 +1,8 @@
 # NTRU_cryptography
 A Post-Quantum Encryption Algorithm
 
+Created in collaboration with [Awnon Bhowmik](https://github.com/awnonbhowmik)
+
 NTRU is an open-source public key cryptosystem that uses
 lattice-based cryptography to encrypt and decrypt data. Unlike
 other popular public-key cryptosystems, it is resistant to
@@ -27,14 +29,16 @@ been tested whether data compression and expansion during
 the encryption-decryption process results in original data with
 no or minimal loss.
 
+## Cloning
+```bash
+$ git clone https://github.com/7enTropy7/NTRU_cryptography.git
+```
+
 ## Demonstration
 
 ![ntru_gif](https://user-images.githubusercontent.com/36446402/82535268-40895b80-9b64-11ea-81cc-0c55677fc22a.gif)
 
-
 ## Outputs
-
-![Screenshot from 2020-02-05 10-37-36](https://user-images.githubusercontent.com/36446402/73812664-a3e4bd00-4803-11ea-8220-77a19916697b.png)
 
 ![Screenshot from 2020-02-06 12-43-24](https://user-images.githubusercontent.com/36446402/73914025-5d17c580-48de-11ea-8ae5-b07e0940b306.png)
 
