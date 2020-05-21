@@ -1,9 +1,38 @@
 # NTRU_cryptography
 A Post-Quantum Encryption Algorithm
 
- The NTRU encryption algorithm, is a lattice-based alternative to RSA and ECC and is based on the shortest vector problem in a lattice (which is not known to be breakable using quantum computers).
+NTRU is an open-source public key cryptosystem that uses
+lattice-based cryptography to encrypt and decrypt data. Unlike
+other popular public-key cryptosystems, it is resistant to
+attacks using Shor's Algorithm and its performance has been
+shown to be significantly greater. 
 
-## Output
+This paper talks about how
+Koblitz encoding from Elliptic Curve Cryptography (ECC)
+can be used to convert each character in a dataset to a point on
+an elliptic curve. A sum of squares analogy is pitted against
+the cantor pairing function to turn the point to a single
+number, which is converted to a sequence of coefficients in Z.
+A polynomial is then generated for each of these characters.
+Then the polynomial is reduced, and then shown that choosing
+appropriate parameters for the cryptosystem can make it
+highly secure and that the decryption algorithm turns out
+taking linear time. Since each character is represented by its
+own polynomial, it increases obscurity thereby increasing the
+complexity for decryption and thus the security level. 
+
+A form
+of data compression has also been implemented and it has
+been tested whether data compression and expansion during
+the encryption-decryption process results in original data with
+no or minimal loss.
+
+## Demonstration
+
+![ntru_gif](https://user-images.githubusercontent.com/36446402/82535268-40895b80-9b64-11ea-81cc-0c55677fc22a.gif)
+
+
+## Outputs
 
 ![Screenshot from 2020-02-05 10-37-36](https://user-images.githubusercontent.com/36446402/73812664-a3e4bd00-4803-11ea-8220-77a19916697b.png)
 
