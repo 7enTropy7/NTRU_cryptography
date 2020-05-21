@@ -1,6 +1,7 @@
 import math
 from random import randint
 from Polynomial import Zx
+import numpy as np
 
 def sq_root_mod_n(n, p):   
     n = n%p 
@@ -8,6 +9,22 @@ def sq_root_mod_n(n, p):
         if ((x*x)%p == n):  
             return x
     return 0 
+
+def cantor_pair(k1, k2, safe=True):
+    z = int(0.5 * (k1 + k2) * (k1 + k2 + 1) + k2)
+    if safe and (k1, k2) != cantor_unpair(z):
+        raise ValueError("{} and {} cannot be paired".format(k1, k2))
+    return z
+
+
+def cantor_unpair(z):
+    w = np.floor((np.sqrt(8 * z + 1) - 1) / 2)
+    t = (w**2 + w) / 2
+    y = int(z - t)
+    x = int(w - y)
+    # assert z != pair(x, y, safe=False):
+    return (x, y)
+
 
 def pyth(x,y):
     return x**2+y**2
@@ -77,7 +94,8 @@ def koblitz_encoder(plainText,elliptic_a,elliptic_b):
     for i in range(len(encoded_points)):
         x = x_coords[i]
         y = y_coords[i]
-        encoded_message.append(dec_ternary(pyth(x,y)))
+        #print(x,y)
+        encoded_message.append(dec_ternary(cantor_pair(x,y)))
         #print(x,y)
     n = 0
     for i in encoded_message:
@@ -93,7 +111,7 @@ def koblitz_encoder(plainText,elliptic_a,elliptic_b):
 def points_decoder(lst):
     decoded = []
     for element in lst:
-        decoded.append(primitive_start_point(ternary_dec(revert_introduce_negative_one(element))))
+        decoded.append(cantor_unpair(float(ternary_dec(revert_introduce_negative_one(element)))))
     return decoded
 
 def koblitz_decoder(encoded_points):
