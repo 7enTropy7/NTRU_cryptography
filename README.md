@@ -34,11 +34,16 @@ no or minimal loss.
 $ git clone https://github.com/7enTropy7/NTRU_cryptography.git
 ```
 
+## Dependencies
+```bash
+$ pip3 install -r requirements.txt
+```
+
 ## Demonstration
 
 ![ntru_gif](https://user-images.githubusercontent.com/36446402/82535268-40895b80-9b64-11ea-81cc-0c55677fc22a.gif)
 
-## Outputs
+## Output
 
 ![Screenshot from 2020-02-06 12-43-24](https://user-images.githubusercontent.com/36446402/73914025-5d17c580-48de-11ea-8ae5-b07e0940b306.png)
 
@@ -47,3 +52,8 @@ $ git clone https://github.com/7enTropy7/NTRU_cryptography.git
 [![LinkedIn-profile](https://img.shields.io/badge/LinkedIn-Unnikrishnan-teal.svg)](https://www.linkedin.com/in/unnikrishnan-menon-aa013415a/) [![LinkedIn-profile](https://img.shields.io/badge/LinkedIn-Awnon-green.svg)](https://www.linkedin.com/in/awnon-bhowmik-13a5a013b/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACIUlr4BQG5MmK7AYfJbU5Zaacunw1qLanM)
 * [**Awnon Bhowmik**](https://github.com/awnonbhowmik)
 * [**Unnikrishnan Menon**](https://github.com/7enTropy7)
+
+
+## Citation
+If you find this code useful in your research, please consider citing:
+
