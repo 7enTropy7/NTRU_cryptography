@@ -1,6 +1,8 @@
-[![python3](https://img.shields.io/badge/python3-v3.6-blue?style=for-the-badge&logo=python)](https://www.python.org)
+[![python3](https://img.shields.io/badge/python3-v3.6-green?style=for-the-badge&logo=python)](https://www.python.org)
 
-[![LinkedIn-profile](https://img.shields.io/badge/LinkedIn-Unnikrishnan-green.svg)](https://www.linkedin.com/in/unnikrishnan-menon-aa013415a/) [![LinkedIn-profile](https://img.shields.io/badge/LinkedIn-Awnon-orange.svg)](https://www.linkedin.com/in/awnon-bhowmik-13a5a013b/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACIUlr4BQG5MmK7AYfJbU5Zaacunw1qLanM) [![GitHub followers](https://img.shields.io/github/followers/7enTropy7?label=Follow&style=social)](https://github.com/7enTropy7?tab=followers) [![GitHub stars](https://img.shields.io/github/stars/7enTropy7/NTRU_cryptography.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/7enTropy7/NTRU_cryptography/stargazers/)
+[![Linkedin](https://img.shields.io/badge/Linkedin-Unnikrishnan%20Menon-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/unnikrishnan-menon-aa013415a/) [![Linkedin](https://img.shields.io/badge/Linkedin-Awnon%20Bhowmik-red?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/awnon-bhowmik-13a5a013b/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACIUlr4BQG5MmK7AYfJbU5Zaacunw1qLanM)
+
+[![GitHub followers](https://img.shields.io/github/followers/7enTropy7?label=Follow&style=social)](https://github.com/7enTropy7?tab=followers) [![GitHub stars](https://img.shields.io/github/stars/7enTropy7/NTRU_cryptography.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/7enTropy7/NTRU_cryptography/stargazers/)
 
 # NTRU_cryptography
 A Post-Quantum Encryption Algorithm
@@ -57,6 +59,9 @@ $ pip3 install -r requirements.txt
 * [**Awnon Bhowmik**](https://github.com/awnonbhowmik)
 * [**Unnikrishnan Menon**](https://github.com/7enTropy7)
 
+<!-- [![Github](https://img.shields.io/badge/Github-Unnikrishnan%20Menon-blue?style=for-the-badge&logo=github)](https://github.com/7enTropy7)
+
+[![Github](https://img.shields.io/badge/Github-Awnon%20Bhowmik-green?style=for-the-badge&logo=github)](https://github.com/awnonbhowmik) -->
 
 ## Citation
 If you find this code useful in your research, please consider citing:
