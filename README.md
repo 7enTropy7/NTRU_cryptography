@@ -1,8 +1,9 @@
 [![python3](https://img.shields.io/badge/python3-v3.6-green?style=for-the-badge&logo=python)](https://www.python.org)
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-purple.svg)](http://www.gnu.org/licenses/gpl-3.0) [![GitHub followers](https://img.shields.io/github/followers/7enTropy7?label=Follow&style=social)](https://github.com/7enTropy7?tab=followers) [![GitHub stars](https://img.shields.io/github/stars/7enTropy7/NTRU_cryptography.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/7enTropy7/NTRU_cryptography/stargazers/)
+
 [![Linkedin](https://img.shields.io/badge/Linkedin-Unnikrishnan%20Menon-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/unnikrishnan-menon-aa013415a/) [![Linkedin](https://img.shields.io/badge/Linkedin-Awnon%20Bhowmik-red?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/awnon-bhowmik-13a5a013b/?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACIUlr4BQG5MmK7AYfJbU5Zaacunw1qLanM)
 
-[![GitHub followers](https://img.shields.io/github/followers/7enTropy7?label=Follow&style=social)](https://github.com/7enTropy7?tab=followers) [![GitHub stars](https://img.shields.io/github/stars/7enTropy7/NTRU_cryptography.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/7enTropy7/NTRU_cryptography/stargazers/)
 
 # NTRU_cryptography
 A Post-Quantum Encryption Algorithm
@@ -62,6 +63,12 @@ $ pip3 install -r requirements.txt
 <!-- [![Github](https://img.shields.io/badge/Github-Unnikrishnan%20Menon-blue?style=for-the-badge&logo=github)](https://github.com/7enTropy7)
 
 [![Github](https://img.shields.io/badge/Github-Awnon%20Bhowmik-green?style=for-the-badge&logo=github)](https://github.com/awnonbhowmik) -->
+
+## License
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-red.svg)](http://www.gnu.org/licenses/gpl-3.0)
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
 
 ## Citation
 If you find this code useful in your research, please consider citing:
