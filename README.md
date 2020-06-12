@@ -8,7 +8,7 @@
 # NTRU_cryptography
 A Post-Quantum Encryption Algorithm
 
-Created in collaboration with [Awnon Bhowmik](https://github.com/awnonbhowmik)
+This repository contains the code for my research paper titled "Enhancing the NTRU cryptosystem"
 
 NTRU is an open-source public key cryptosystem that uses
 lattice-based cryptography to encrypt and decrypt data. Unlike
