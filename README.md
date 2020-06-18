@@ -72,22 +72,4 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Citation
 If you find this code useful in your research, please consider citing:
-@article{10.5120/ijca2020920320,
-	author = {Awnon Bhowmik and Unnikrishnan Menon},
-	title = {Enhancing the NTRU Cryptosystem},
-	journal = {International Journal of Computer Applications},
-	issue_date = {June 2020},
-	volume = {176},
-	number = {29},
-	month = {Jun},
-	year = {2020},
-	issn = {0975-8887},
-	pages = {46-53},
-	numpages = {8},
-	url = {http://www.ijcaonline.org/archives/volume176/number29/31388-2020920320},
-	doi = {10.5120/ijca2020920320},
-	publisher = {Foundation of Computer Science (FCS), NY, USA},
-	address = {New York, USA}
-}
-
-
+Awnon Bhowmik and Unnikrishnan Menon. Enhancing the NTRU Cryptosystem. International Journal of Computer Applications 176(29):46-53, June 2020.
