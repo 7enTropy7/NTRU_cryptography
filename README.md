@@ -72,4 +72,5 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Citation
 If you find this code useful in your research, please consider citing:
-!Awnon Bhowmik and Unnikrishnan Menon. Enhancing the NTRU Cryptosystem. International Journal of Computer Applications 176(29):46-53, June 2020.
+
+Awnon Bhowmik and Unnikrishnan Menon. Enhancing the NTRU Cryptosystem. International Journal of Computer Applications 176(29):46-53, June 2020.
